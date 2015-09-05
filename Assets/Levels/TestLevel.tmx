@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="Basic" tilewidth="16" tileheight="16" spacing="1" tilecount="3">
+  <image source="../Sprites/Tiles.png" width="50" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="Collisions" value="1"/>
+   </properties>
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0.125" width="15.75" height="15.75"/>
+   </objectgroup>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Collisions" value="0"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1sEKACEIBFBj//+f91ywYDHqtM7BW9kjLRxmNhSweD6i2iUfJj+7b83DWh/5uH0sebr70P9NF19UfiZfxP138VXNPp4zK2ezv/kybbu+qLNR0c3HXl/5uHyVbyjbh3ybET1wiw/R61k+z31F3vHtPqZ93vXruoy/+KQumbPATg+x+xRzvFedCNE=
+  </data>
+ </layer>
+</map>
