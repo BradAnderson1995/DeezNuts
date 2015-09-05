@@ -8,6 +8,7 @@ namespace Assets.Scripts.AI
         [SerializeField] private int enemyHealth = 3;
         [SerializeField] private int damageDealt = 1;
         private bool up = false;
+        private bool wait = true;
 
         void Start()
         {
@@ -23,15 +24,22 @@ namespace Assets.Scripts.AI
 
         public override void Move()
         {
+            if (wait)
+            {
+                wait = false;
+                return;
+            }
             if (up)
             {
                 TryMove(new Vector2(transform.position.x, transform.position.y - LevelManager.UnitSize), new Vector2(0, -1f));
                 up = false;
+                wait = true;
             }
             else
             {
                 TryMove(new Vector2(transform.position.x, transform.position.y + LevelManager.UnitSize), new Vector2(0, 1f));
                 up = true;
+                wait = true;
             }
         }
     }

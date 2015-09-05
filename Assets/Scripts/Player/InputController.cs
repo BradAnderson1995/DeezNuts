@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player
     {
         private int x = 0;
         private int y = 0;
+        private bool usePotion = false;
         private PlayerController playerController;
 
         // Use this for initialization
@@ -44,10 +45,21 @@ namespace Assets.Scripts.Player
             {
                 y = 0;
             }
+
+            // Has player used a potion
+            if (Input.GetButtonDown("UsePotion"))
+            {
+                usePotion = true;
+            }
         }
 
         public void FixedUpdate()
         {
+            if (usePotion)
+            {
+                usePotion = false;
+                playerController.UsePotion();
+            }
             playerController.Move(x, y);
         }
     }

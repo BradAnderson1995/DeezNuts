@@ -5,6 +5,7 @@ namespace Assets.Scripts
 {
     public abstract class AbstractMovable : MonoBehaviour
     {
+        [SerializeField] private GameObject hitEffect;
         protected LevelManager levelManager;
         protected Collider2D collider;
         protected int health;
@@ -48,9 +49,9 @@ namespace Assets.Scripts
 
         public virtual void TakeDamage(int damageReceived)
         {
-//            print("At start " + health);
+            Instantiate(hitEffect, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
             health -= damageReceived;
-//            print("At end " + health);
+            print("At end " + health);
             if (health <= 0)
             {
                 Die();

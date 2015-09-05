@@ -11,12 +11,16 @@ namespace Assets.Scripts.Player
         [SerializeField] private int sightRadius = 4;
         private int damageDealt = 1;
         private int playerHealth = 5;
+        private int maxHealth = 5;
+        private int potionRestore = 5;
+        private int healthPotions = 0;
         private bool canAct = false;
 
         // Use this for initialization
         public void Start()
         {
             base.Start();
+            GameObject.DontDestroyOnLoad(gameObject);
             damage = damageDealt;
             health = playerHealth;
         }
@@ -78,6 +82,13 @@ namespace Assets.Scripts.Player
                 {
                     Application.LoadLevel(raycast.collider.GetComponent<Staircase>().nextLevel);
                 }
+                // Check for item
+                raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.ItemLayer);
+                if (raycast.transform != null)
+                {
+                    print("Encountered item");
+                    raycast.collider.GetComponent<IItem>().ReceiveItem(this);
+                }
                 collider.enabled = false;
                 raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.EnemyLayer);
                 collider.enabled = true;
@@ -94,6 +105,25 @@ namespace Assets.Scripts.Player
                 return false;
             }
             return false;
+        }
+
+        public void GetPotion()
+        {
+            healthPotions += 1;
+        }
+
+        public void UsePotion()
+        {
+            if (healthPotions > 0)
+            {
+                healthPotions -= 1;
+                health += potionRestore;
+                if (health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+                print(health);
+            }
         }
 
         private void ClearFog()
@@ -115,6 +145,12 @@ namespace Assets.Scripts.Player
                     fog.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, .5f);
                 }
             }
+        }
+
+        protected override void Die()
+        {
+            Application.LoadLevel("TestScene");
+            levelManager.DestroyObject(this);
         }
     }
 }

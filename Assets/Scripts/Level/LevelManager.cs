@@ -9,11 +9,14 @@ namespace Assets.Scripts.Level
     public class LevelManager : MonoBehaviour
     {
         [SerializeField] private int WaitFrames = 30;
+        [SerializeField] private GameObject player;
         [SerializeField] public LayerMask WallLayer;
         [SerializeField] public LayerMask EnemyLayer;
         [SerializeField] public LayerMask FogLayer;
         [SerializeField] public LayerMask StaircaseLayer;
+        [SerializeField] public LayerMask ItemLayer;
         [SerializeField] private GameObject fogOfWar;
+        private Transform spawn;
         private int frameCounter = 0;
         private bool count = true;
         private PlayerController playerController;
@@ -24,8 +27,10 @@ namespace Assets.Scripts.Level
         // Use this for initialization
         private void Start()
         {
-            playerController = FindObjectOfType<PlayerController>();
+            spawn = GameObject.FindGameObjectWithTag("Respawn").transform;
             enemyList = FindObjectsOfType<AbstractMovable>().ToList();
+            GameObject playerObject = (GameObject) Instantiate(player, spawn.position, Quaternion.identity);
+            playerController = playerObject.GetComponent<PlayerController>();
             print(enemyList.Count);
             for (int i = 0; i < 40; i++)
             {
