@@ -7,6 +7,8 @@ namespace Assets.Scripts
     {
         protected LevelManager levelManager;
         protected Collider2D collider;
+        protected int health;
+        protected int damage;
 
         public void Start()
         {
@@ -18,6 +20,7 @@ namespace Assets.Scripts
 
         protected virtual bool TryMove(Vector2 newPosition, Vector2 direction)
         {
+            print("Trying to move");
             // TODO: Add enemy collision code
             RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.WallLayer);
             if (raycast.transform == null)
@@ -31,12 +34,35 @@ namespace Assets.Scripts
 
                     return true;
                 }
-                AttackEnemy(raycast.collider.GetComponent<AbstractMovable>());
+                if (raycast.collider.GetComponent<AbstractMovable>() != null)
+                {
+                    print("Attacking");
+                    AttackEnemy(raycast.collider.GetComponent<AbstractMovable>());
+                }
                 return false;
             }
             return false;
         }
 
-        protected abstract void AttackEnemy(AbstractMovable enemy);
+        protected virtual void AttackEnemy(AbstractMovable enemy)
+        {
+            enemy.TakeDamage(damage);
+        }
+
+        public virtual void TakeDamage(int damageReceived)
+        {
+//            print("At start " + health);
+            health -= damageReceived;
+//            print("At end " + health);
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+
+        protected virtual void Die()
+        {
+            levelManager.DestroyObject(this);
+        }
     }
 }

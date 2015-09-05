@@ -67,5 +67,11 @@ namespace Assets.Scripts.Level
             }
             count = true;
         }
+
+        public void DestroyObject(AbstractMovable destroy)
+        {
+            enemyList.Remove(destroy);
+            Destroy(destroy.gameObject);
+        }
     }
 }

@@ -5,8 +5,16 @@ namespace Assets.Scripts.AI
 {
     public class Enemy1 : AbstractMovable
     {
+        [SerializeField] private int enemyHealth = 3;
+        [SerializeField] private int damageDealt = 1;
         private bool up = false;
-        private int damage = 5;
+
+        void Start()
+        {
+            base.Start();
+            health = enemyHealth;
+            damage = damageDealt;
+        }
 
         // Update is called once per frame
         void Update () {
@@ -15,7 +23,6 @@ namespace Assets.Scripts.AI
 
         public override void Move()
         {
-            print("Enemy trying to move");
             if (up)
             {
                 TryMove(new Vector2(transform.position.x, transform.position.y - LevelManager.UnitSize), new Vector2(0, -1f));
@@ -26,11 +33,6 @@ namespace Assets.Scripts.AI
                 TryMove(new Vector2(transform.position.x, transform.position.y + LevelManager.UnitSize), new Vector2(0, 1f));
                 up = true;
             }
-        }
-
-        protected override void AttackEnemy(AbstractMovable enemy)
-        {
-            
         }
     }
 }

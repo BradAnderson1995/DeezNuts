@@ -9,12 +9,16 @@ namespace Assets.Scripts.Player
     public class PlayerController : AbstractMovable
     {
         [SerializeField] private int sightRadius = 4;
+        private int damageDealt = 1;
+        private int playerHealth = 5;
         private bool canAct = false;
 
         // Use this for initialization
         public void Start()
         {
             base.Start();
+            damage = damageDealt;
+            health = playerHealth;
         }
 
         // Update is called once per frame
@@ -48,9 +52,6 @@ namespace Assets.Scripts.Player
                     new Vector2(x, 0)))
                 {
                     ClearFog();
-                    // Start the LevelManager counting down to the next move
-                    levelManager.EnableCount();
-                    canAct = false;
                 }
             }
             else if (Mathf.Abs(y) > 0)
@@ -58,16 +59,12 @@ namespace Assets.Scripts.Player
                 if (TryMove(new Vector2(transform.position.x, transform.position.y + LevelManager.UnitSize*y),
                     new Vector2(0, y)))
                 {
-                    // Start the LevelManager counting down to the next move
-                    levelManager.EnableCount();
-                    canAct = false;
+                    ClearFog();
                 }
             }
-        }
-
-        protected override void AttackEnemy(AbstractMovable enemy)
-        {
-            print("Attacking enemy");
+            // Start the LevelManager counting down to the next move
+            levelManager.EnableCount();
+            canAct = false;
         }
 
         private void ClearFog()
