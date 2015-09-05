@@ -23,6 +23,7 @@ namespace Assets.Scripts.Level
         {
             playerController = FindObjectOfType<PlayerController>();
             enemyList = FindObjectsOfType<AbstractMovable>().ToList();
+            print(enemyList.Count);
         }
 
         // Update is called once per frame

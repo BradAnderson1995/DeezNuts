@@ -7,14 +7,12 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof (InputController))]
     public class PlayerController : AbstractMovable
     {
-        [SerializeField] private LayerMask wallLayer;
         private bool canAct = false;
-        private LevelManager levelManager;
 
         // Use this for initialization
         public void Start()
         {
-            levelManager = FindObjectOfType<LevelManager>();
+            base.Start();
         }
 
         // Update is called once per frame
@@ -44,23 +42,23 @@ namespace Assets.Scripts.Player
             // Execute movement
             if (Mathf.Abs(x) > 0)
             {
-                TryMove(new Vector2(transform.position.x + LevelManager.UnitSize*x, transform.position.y), new Vector2(x, 0), levelManager.WallLayer, levelManager.EnemyLayer);
+                TryMove(new Vector2(transform.position.x + LevelManager.UnitSize*x, transform.position.y), new Vector2(x, 0));
                 // Start the LevelManager counting down to the next move
                 levelManager.EnableCount();
                 canAct = false;
             }
             else if (Mathf.Abs(y) > 0)
             {
-                TryMove(new Vector2(transform.position.x, transform.position.y + LevelManager.UnitSize*y), new Vector2(0, y), levelManager.WallLayer, levelManager.EnemyLayer);
+                TryMove(new Vector2(transform.position.x, transform.position.y + LevelManager.UnitSize*y), new Vector2(0, y));
                 // Start the LevelManager counting down to the next move
                 levelManager.EnableCount();
                 canAct = false;
             }
         }
 
-        protected override void AttackEnemy(Vector2 attackPosition)
+        protected override void AttackEnemy(AbstractMovable enemy)
         {
-            throw new System.NotImplementedException();
+            print("Attacking enemy");
         }
     }
 }
