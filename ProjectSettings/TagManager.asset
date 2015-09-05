@@ -15,7 +15,7 @@ TagManager:
   - 
   - Walls
   - Enemy
-  - 
+  - FogofWar
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FogOfWar
+    uniqueID: 1747252607
     locked: 0

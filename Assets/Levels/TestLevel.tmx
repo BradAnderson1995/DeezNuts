@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="Basic" tilewidth="16" tileheight="16" spacing="1" tilecount="3">
-  <image source="../Sprites/Tiles.png" width="50" height="16"/>
+ <tileset firstgid="1" name="Basic" tilewidth="16" tileheight="16" spacing="1" tilecount="4">
+  <image source="../Sprites/Tiles.png" width="67" height="16"/>
   <tile id="0">
-   <properties>
-    <property name="Collisions" value="1"/>
-   </properties>
    <objectgroup draworder="index">
-    <object id="0" x="0" y="0.125" width="15.75" height="15.75"/>
+    <object id="0" x="-0.454545" y="-0.545455" width="16.6364" height="16.6364"/>
+   </objectgroup>
+  </tile>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0.0909091" width="16.0909" height="15.7273"/>
    </objectgroup>
   </tile>
   <tile id="2">
@@ -16,9 +18,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="40" height="40">
+ <layer name="Level" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1sEKACEIBFBj//+f91ywYDHqtM7BW9kjLRxmNhSweD6i2iUfJj+7b83DWh/5uH0sebr70P9NF19UfiZfxP138VXNPp4zK2ezv/kybbu+qLNR0c3HXl/5uHyVbyjbh3ybET1wiw/R61k+z31F3vHtPqZ93vXruoy/+KQumbPATg+x+xRzvFedCNE=
+   eJzt1sEKACEIBFCJ/f9v3nPBgsWo0zoHb2WPtHCY2VDA4vmIapd8mPzsvjUPa33k4/ax5OnuQ/83XXxR+Zl8EfffxVc1+3jOrJzN/ubLtO36os5GRTcfe33l4/JVvqFsH/JtRvTALT5Er2f5PPcVece3+5j2edev6zL+4pO6ZM4COz3E7lPM8QKIrw8R
+  </data>
+ </layer>
+ <layer name="FogofWar" width="40" height="40" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKH7/qXXYyi4aqqqqqqqqo8eShIGQQ==
   </data>
  </layer>
 </map>
