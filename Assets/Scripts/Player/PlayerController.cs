@@ -67,6 +67,35 @@ namespace Assets.Scripts.Player
             canAct = false;
         }
 
+        protected override bool TryMove(Vector2 newPosition, Vector2 direction)
+        {
+            RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.WallLayer);
+            if (raycast.transform == null)
+            {
+                // Check for staircase
+                raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.StaircaseLayer);
+                if (raycast.transform != null)
+                {
+                    Application.LoadLevel(raycast.collider.GetComponent<Staircase>().nextLevel);
+                }
+                collider.enabled = false;
+                raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.EnemyLayer);
+                collider.enabled = true;
+                if (raycast.transform == null)
+                {
+                    transform.position = newPosition;
+
+                    return true;
+                }
+                if (raycast.collider.GetComponent<AbstractMovable>() != null)
+                {
+                    AttackEnemy(raycast.collider.GetComponent<AbstractMovable>());
+                }
+                return false;
+            }
+            return false;
+        }
+
         private void ClearFog()
         {
             // Remove fog close to player

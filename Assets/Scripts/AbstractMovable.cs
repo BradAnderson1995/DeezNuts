@@ -20,8 +20,6 @@ namespace Assets.Scripts
 
         protected virtual bool TryMove(Vector2 newPosition, Vector2 direction)
         {
-            print("Trying to move");
-            // TODO: Add enemy collision code
             RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.WallLayer);
             if (raycast.transform == null)
             {
@@ -36,7 +34,6 @@ namespace Assets.Scripts
                 }
                 if (raycast.collider.GetComponent<AbstractMovable>() != null)
                 {
-                    print("Attacking");
                     AttackEnemy(raycast.collider.GetComponent<AbstractMovable>());
                 }
                 return false;

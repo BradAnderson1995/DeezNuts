@@ -12,6 +12,7 @@ namespace Assets.Scripts.Level
         [SerializeField] public LayerMask WallLayer;
         [SerializeField] public LayerMask EnemyLayer;
         [SerializeField] public LayerMask FogLayer;
+        [SerializeField] public LayerMask StaircaseLayer;
         [SerializeField] private GameObject fogOfWar;
         private int frameCounter = 0;
         private bool count = true;
