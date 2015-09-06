@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c5d1936785abf4cbeddbdcdb190df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: TestScene
+  firstLevel: Level1
 --- !u!224 &51222566
 RectTransform:
   m_ObjectHideFlags: 0

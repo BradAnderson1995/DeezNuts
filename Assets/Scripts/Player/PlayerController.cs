@@ -26,7 +26,6 @@ namespace Assets.Scripts.Player
         public void Start()
         {
             base.Start();
-            GameObject.DontDestroyOnLoad(gameObject);
             damage = damageDealt;
             health = playerHealth;
             healthList = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthList>();
@@ -229,8 +228,7 @@ namespace Assets.Scripts.Player
 
         protected override void Die()
         {
-            Application.LoadLevel("TestScene");
-            levelManager.DestroyObject(this);
+            Application.LoadLevel("TitleScene");
         }
     }
 }

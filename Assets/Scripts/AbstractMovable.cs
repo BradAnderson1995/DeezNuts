@@ -22,9 +22,9 @@ namespace Assets.Scripts
 
         public void FixedUpdate()
         {
-            animator.ResetTrigger("Up");
-            animator.ResetTrigger("Down");
-            animator.ResetTrigger("Side");
+//            animator.ResetTrigger("Up");
+//            animator.ResetTrigger("Down");
+//            animator.ResetTrigger("Side");
         }
 
         public abstract void Move();

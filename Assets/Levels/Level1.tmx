@@ -2,6 +2,11 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="4">
   <image source="../Sprites/Level/tilesheet.png" width="67" height="16"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.181818" y="-0.0909091" width="16.4545" height="16.0909"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Tile Layer 1" width="40" height="40">
   <data encoding="base64" compression="zlib">

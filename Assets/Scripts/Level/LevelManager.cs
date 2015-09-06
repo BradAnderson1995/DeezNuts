@@ -29,8 +29,8 @@ namespace Assets.Scripts.Level
         {
             spawn = GameObject.FindGameObjectWithTag("Respawn").transform;
             enemyList = FindObjectsOfType<AbstractMovable>().ToList();
-            GameObject playerObject = (GameObject) Instantiate(player, spawn.position, Quaternion.identity);
-            playerController = playerObject.GetComponent<PlayerController>();
+//            GameObject playerObject = (GameObject) Instantiate(player, spawn.position, Quaternion.identity);
+            playerController = FindObjectOfType<PlayerController>();
             print(enemyList.Count);
             for (int i = 0; i < 40; i++)
             {
