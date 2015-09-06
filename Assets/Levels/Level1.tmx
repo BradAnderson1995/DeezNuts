@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" spacing="1" tilecount="4">
+  <image source="../Sprites/Level/tilesheet.png" width="67" height="16"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztl7ESAjEIRBPv/v+bbSwcBthdwEtjQeFoyMsuhLjXWrsZ9ye6eaKcr0awuZR9TvFdX4FybiJnhW8TOT0/o7yn+VDeKT6kh8en5mV8iHpNrX9Wv6y21Tuhwofqb6qPGSamd3+pX6ZJRV/bdxnf7UTma6cmVG8jTkYTdL4JPm8ve37kbTSjWT6F0Z4J1Yv9Tulv5u3B8GXeRZpncQV5UY10+dge9visbgof42+Vz/NS8ZftD2WN5WPPpdYS8sL+bpovW+v5HvHZzx5f5nPUC6g2sjvsCb6sX5n5eZIP1UDULxP1173vkKYqn1dTVT5GU3T/sVwqH9Pzlg+9UdEMVPmQT6f1U/jUOWDjCT62dxHzJB9Tqx3uP1/NW4YvWoNmV0WjqfdopkF13eR7vssX3StIv4n7QfWT+Q/VZVTu5owPzZ2Kz+r5svmGZr2qoTeXmGC9jTRn97F7vQEl4Axb
+  </data>
+ </layer>
+</map>
