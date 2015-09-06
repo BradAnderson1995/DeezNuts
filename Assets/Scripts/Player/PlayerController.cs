@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
 using Assets.Scripts.Level;
@@ -16,6 +17,11 @@ namespace Assets.Scripts.Player
         private int healthPotions = 0;
         private bool canAct = false;
 
+        private Sprite fullHeart = Resources.Load < Sprite >("fullHeart");
+        private Sprite emptyHeat = Resources.Load<Sprite>("emptyHeart");
+
+        private HealthList healthList;
+
         // Use this for initialization
         public void Start()
         {
@@ -23,6 +29,8 @@ namespace Assets.Scripts.Player
             GameObject.DontDestroyOnLoad(gameObject);
             damage = damageDealt;
             health = playerHealth;
+            healthList = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthList>();
+            checkHealth();
         }
 
         // Update is called once per frame
@@ -123,6 +131,15 @@ namespace Assets.Scripts.Player
                     health = maxHealth;
                 }
                 print(health);
+                checkHealth();
+            }
+        }
+
+        private void checkHealth()
+        {
+            for (int i = 0; i < maxHealth; i++)
+            {
+                healthList.containers[i].gameObject.GetComponent<Image>().sprite = i < health ? fullHeart : emptyHeat;
             }
         }
 

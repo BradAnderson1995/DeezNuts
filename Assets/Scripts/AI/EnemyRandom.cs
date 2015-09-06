@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.AI
 {
-    public class Enemy2 : AbstractMovable
+    public class EnemyRandom : AbstractMovable
     {
         [SerializeField]   private int enemyHealth = 3;
         [SerializeField]   private int damageDealt = 1;
