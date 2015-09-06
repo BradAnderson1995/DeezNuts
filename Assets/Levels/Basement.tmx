@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="tilesheet" tilewidth="16" tileheight="16" spacing="1" tilecount="4">
+  <image source="../Sprites/Level/tilesheet.png" width="67" height="16"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzllt0OgCAIRsF6/2euGzfH+FMhWl0wLxoePkACAQCL7GSsf2u3HcEn5WIyj+NG8bS8StwIPVLtOC6NJyKPXu6snpm+ieCOflZ8Fne1jlVcLU9Z3FbMlfwzuVqd/8T1vt8srjWfI7kz82yXi6Drz+DSd/x1blWeub56O3d1r+Lilu7L3HMkHZl7HdWg6afc3Xxze7hnfq/knfsHWDokH69+zX+8Q+uDp+0CZ7EHzA==
+  </data>
+ </layer>
+</map>
