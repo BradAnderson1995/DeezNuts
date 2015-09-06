@@ -9,6 +9,7 @@ namespace Assets.Scripts.Player
     public class PlayerController : AbstractMovable
     {
         [SerializeField] private int sightRadius = 4;
+        public int facing = 1;
         private int damageDealt = 1;
         private int playerHealth = 5;
         private int maxHealth = 5;
@@ -73,6 +74,24 @@ namespace Assets.Scripts.Player
 
         protected override bool TryMove(Vector2 newPosition, Vector2 direction)
         {
+            Animate(direction);
+            // For figuring out direction when switching equipment
+            if (direction.x > 0)
+            {
+                facing = 0;
+            }
+            else if (direction.x < 0)
+            {
+                facing = 2;
+            }
+            else if (direction.y > 0)
+            {
+                facing = 1;
+            }
+            else if (direction.y < 0)
+            {
+                facing = 3;
+            }
             RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.WallLayer);
             if (raycast.transform == null)
             {
@@ -83,11 +102,16 @@ namespace Assets.Scripts.Player
                     Application.LoadLevel(raycast.collider.GetComponent<Staircase>().nextLevel);
                 }
                 // Check for item
-                raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.ItemLayer);
-                if (raycast.transform != null)
+                RaycastHit2D[] raycasts = Physics2D.RaycastAll(transform.position, direction, 16f, levelManager.ItemLayer);
+                bool encounteredItem = false;
+                foreach (RaycastHit2D item in raycasts.Where(item => item.collider != null))
                 {
-                    print("Encountered item");
-                    raycast.collider.GetComponent<IItem>().ReceiveItem(this);
+                    item.collider.GetComponent<IItem>().ReceiveItem(this);
+                    encounteredItem = true;
+                }
+                if (encounteredItem)
+                {
+                    return false;
                 }
                 collider.enabled = false;
                 raycast = Physics2D.Raycast(transform.position, direction, 16f, levelManager.EnemyLayer);
@@ -105,6 +129,32 @@ namespace Assets.Scripts.Player
                 return false;
             }
             return false;
+        }
+
+        public void Equip(string itemName)
+        {
+            if (itemName == "BlueSword")
+            {
+                animator.SetBool("BlueSword", true);
+                animator.SetBool("GoldSword", false);
+            }
+            else if (itemName == "GoldSword")
+            {
+                animator.SetBool("GoldSword", true);
+                animator.SetBool("BlueSword", false);
+            }
+            if (facing == 0 || facing == 2)
+            {
+                animator.SetTrigger("Side");
+            }
+            else if (facing == 1)
+            {
+                animator.SetTrigger("Up");
+            }
+            else if (facing == 3)
+            {
+                animator.SetTrigger("Down");
+            }
         }
 
         public void GetPotion()
