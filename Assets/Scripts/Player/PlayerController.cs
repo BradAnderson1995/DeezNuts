@@ -18,8 +18,8 @@ namespace Assets.Scripts.Player
         private int healthPotions = 0;
         private bool canAct = false;
 
-        private Sprite fullHeart = Resources.Load < Sprite >("fullHeart");
-        private Sprite emptyHeat = Resources.Load<Sprite>("emptyHeart");
+        private Sprite fullHeart = Resources.Load< Sprite >("FullHeart");
+        private Sprite emptyHeart = Resources.Load<Sprite>("EmptyHeart");
 
         private HealthList healthList;
 
@@ -38,6 +38,14 @@ namespace Assets.Scripts.Player
         public void Update()
         {
             ClearFog();
+            for (int i = 0; i < health; i++)
+            {
+                healthList.containers[health - i].GetComponent<Image>().sprite = fullHeart;
+            }
+            for (int i = 0; i < maxHealth - health; i++)
+            {
+                healthList.containers[maxHealth - i].GetComponent<Image>().sprite = emptyHeart;
+            }
         }
 
         public void EnableAction()
