@@ -6,5 +6,11 @@ AnimatorOverrideController:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: SquirrelAC
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: b289c2ac17605484d8d1c8061f2a08e9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bfb04251887cd4c4bb708bd8bf1cd368, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f8a25367b1b2162408d1372f106827b3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8902c4b3afb6e4b43800d12d01fce72f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b333e4571ee4ffb41a4dd96192e7b10e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a8646fe79e56aed4d931d9e1ca41a712, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fe428f75c7ab32b49abae1352df79942, type: 2}
