@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FlyingSquirrelAC
+  m_Controller: {fileID: 9100000, guid: b289c2ac17605484d8d1c8061f2a08e9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bfb04251887cd4c4bb708bd8bf1cd368, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0f3b9816aa2b3ac479f4da95d1940ce4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8902c4b3afb6e4b43800d12d01fce72f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 43ae6cebbdd706e4784e2d2d73612599, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a8646fe79e56aed4d931d9e1ca41a712, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a4774593376f9a349b2cb00199087ec0, type: 2}

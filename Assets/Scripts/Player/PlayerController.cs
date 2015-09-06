@@ -10,16 +10,15 @@ namespace Assets.Scripts.Player
     public class PlayerController : AbstractMovable
     {
         [SerializeField] private int sightRadius = 4;
+        [SerializeField] private Sprite fullHeart; // Resources.Load< Sprite >("FullHeart");
+        [SerializeField] private Sprite emptyHeart;  // Resources.Load<Sprite>("EmptyHeart");
         public int facing = 1;
         private int damageDealt = 1;
-        private int playerHealth = 5;
-        private int maxHealth = 5;
+        private int playerHealth = 10;
+        private int maxHealth = 10;
         private int potionRestore = 5;
         private int healthPotions = 0;
         private bool canAct = false;
-
-        private Sprite fullHeart = Resources.Load< Sprite >("FullHeart");
-        private Sprite emptyHeart = Resources.Load<Sprite>("EmptyHeart");
 
         private HealthList healthList;
 
@@ -31,7 +30,7 @@ namespace Assets.Scripts.Player
             damage = damageDealt;
             health = playerHealth;
             healthList = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthList>();
-            checkHealth();
+//            checkHealth();
         }
 
         // Update is called once per frame
@@ -40,11 +39,13 @@ namespace Assets.Scripts.Player
             ClearFog();
             for (int i = 0; i < health; i++)
             {
-                healthList.containers[health - i].GetComponent<Image>().sprite = fullHeart;
+                healthList.containers[maxHealth - i - 1].GetComponent<Image>().sprite = fullHeart;
+                healthList.containers[maxHealth - i - 1].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
             for (int i = 0; i < maxHealth - health; i++)
             {
-                healthList.containers[maxHealth - i].GetComponent<Image>().sprite = emptyHeart;
+                healthList.containers[i].GetComponent<Image>().sprite = emptyHeart;
+                healthList.containers[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
         }
 
@@ -153,11 +154,13 @@ namespace Assets.Scripts.Player
             {
                 animator.SetBool("BlueSword", true);
                 animator.SetBool("GoldSword", false);
+                damage = 2;
             }
             else if (itemName == "GoldSword")
             {
                 animator.SetBool("GoldSword", true);
                 animator.SetBool("BlueSword", false);
+                damage = 5;
             }
             if (facing == 0 || facing == 2)
             {
@@ -188,19 +191,21 @@ namespace Assets.Scripts.Player
                 {
                     health = maxHealth;
                 }
-                print(health);
-                checkHealth();
+//                print(health);
+//                checkHealth();
             }
         }
+/*
 
         private void checkHealth()
         {
             for (int i = 0; i < maxHealth; i++)
             {
-                healthList.containers[i].gameObject.GetComponent<Image>().sprite = i < health ? fullHeart : emptyHeat;
+                healthList.containers[i].gameObject.GetComponent<Image>().sprite = i < health ? fullHeart : emptyHeart;
             }
         }
 
+*/
         private void ClearFog()
         {
             // Remove fog close to player
